@@ -5,6 +5,7 @@ from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
+from datetime import datetime
 
 class TestHomePage(unittest.TestCase):
     def setUp(self) -> None:
@@ -23,6 +24,8 @@ class TestHomePage(unittest.TestCase):
         pricing_link.click()
         sleep(3)
         title = self.driver.title
+        self.driver.set_window_size(1080,800)
+        result = self.driver.save_screenshot(f'screenshots/test_pricing_link_{datetime.now().strftime("%H-%M-%S")}.png')
         assert title == "Pricing — Seedtrakr | Seed Management Solution" , "Pricing Page Title Incorrect"
 
     def test_require_captcha(self):
