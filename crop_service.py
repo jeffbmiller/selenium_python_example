@@ -16,7 +16,7 @@ class CropService():
     def fetch_crop_prices(driver: WebDriver) -> List[Crop]:
 
         options = Options()
-        options.headless = False
+        options.headless = True
         driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
 
         try: 
